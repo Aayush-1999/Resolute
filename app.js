@@ -7,7 +7,9 @@ const express               = require("express"),
 require("dotenv").config();
 
 //ROUTES
-const indexRoute = require("./routes/index");
+const indexRoute = require("./routes/index"),
+      bookingRoute = require("./routes/booking"),
+      userRoute  = require("./routes/user");
 
 mongoose.connect(process.env.DATABASEURL,{ useUnifiedTopology: true ,useNewUrlParser:true});
 mongoose.set("useFindAndModify",false);
@@ -18,6 +20,8 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
 app.use("/",indexRoute);
+app.use("/book",bookingRoute);
+app.use("/user",userRoute);
 
 app.listen(5000)
 {
