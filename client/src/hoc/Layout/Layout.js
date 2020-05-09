@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import Appbar from '../../Containers/UserProfile/userProfile';
 import Auxiliary from '../Auxiliary/Auxiliary';
+import Appbar from '../../Components/Appbar/Appbar';
 
 class Layout extends Component{
     render(){

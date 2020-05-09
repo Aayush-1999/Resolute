@@ -7,6 +7,7 @@ import SignUp from './Containers/signup/signup';
 import Layout from './hoc/Layout/Layout';
 import Home from './Containers/Home/Home';
 import User from './Containers/UserProfile/userProfile';
+import Auxiliary from './hoc/Auxiliary/Auxiliary';
 import * as actions from './store/actions/index';
 
 class App extends Component{
@@ -21,21 +22,23 @@ class App extends Component{
         <Route path="/signin" exact component={LoginEmail} />
         <Route path="/signin/pwd" exact component={LoginPassword} />
         <Route path="/signup" exact component={SignUp} />
-        <Route path="/user" exact component={User} />
       </Switch>
     )
     
     if(this.props.isAuthenticated){
       routes=(
-        <Switch>
-          <Route path="/" exact component={Home} />
-        </Switch>
+        <Layout>
+          <Switch>
+            <Route path="/" exact component={Home} />
+          {/* <Route path="/user" exact component={User} /> */}
+          </Switch>
+        </Layout>
       )
     }
     return(
-      <Layout>
+      <Auxiliary>
         {routes}
-      </Layout>
+        </Auxiliary>
     )
   }
 }
