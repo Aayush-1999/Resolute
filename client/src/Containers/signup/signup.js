@@ -24,11 +24,11 @@ import styles from './signup.styles';
 class SignUp extends Component{
     state={
         user:{
-            firstName:null,
-            lastName:null,
-            email:null,
-            password:null,
-            confirm:null
+            firstName:"",
+            lastName:"",
+            email:"",
+            password:"",
+            confirm:""
         },
         progressBar:false,
         showPassword:false
@@ -36,7 +36,7 @@ class SignUp extends Component{
 
     handleChange = (event,key) => {
         const newUser={...this.state.user}
-        newUser.key=event.target.value
+        newUser[key]=event.target.value
         this.setState({user:newUser})
     }
 

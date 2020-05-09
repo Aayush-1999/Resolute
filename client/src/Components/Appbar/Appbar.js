@@ -41,7 +41,7 @@ export default function Header(props) {
           </Typography>
           {/* <Button color="inherit" onClick={props.bookAppointments} >Book an Appointment</Button> */}
           <Link to="/home" component={RouterLink} underline='none' className={classes.linkItem}>Book an Appointment</Link>
-          <Link to="/user" component={RouterLink} underline='none' className={classes.linkItem}>Booked Appointments</Link>
+          <Link to="/appointments" component={RouterLink} underline='none' className={classes.linkItem}>My Appointments</Link>
           <Button color="inherit" onClick={props.logout} >Logout</Button>
         </Toolbar>
       </AppBar>

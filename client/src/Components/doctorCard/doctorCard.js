@@ -50,9 +50,16 @@ export default function MediaCard(props) {
         </CardContent>
       </CardActionArea>
       <CardActions>
+        {props.isBooked ?
+        <Button size="small" color="primary" onClick={props.bookAppointment} >
+          Appointment booked
+        </Button> 
+        :
         <Button size="small" color="primary" onClick={props.bookAppointment} >
           Book an appointment
         </Button>
+         }
+        
       </CardActions>
     </Card>
   );

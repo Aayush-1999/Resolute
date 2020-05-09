@@ -30,7 +30,7 @@ class App extends Component{
         <Layout>
           <Switch>
             <Route path="/home" exact component={Home} />
-            <Route path="/user" exact component={User} />
+            <Route path="/appointments" exact component={User} />
           </Switch>
         </Layout>
       )
@@ -38,7 +38,7 @@ class App extends Component{
     return(
       <Auxiliary>
         {routes}
-        </Auxiliary>
+      </Auxiliary>
     )
   }
 }
