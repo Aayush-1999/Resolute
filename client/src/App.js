@@ -6,7 +6,7 @@ import LoginPassword from './Containers/login/password/login-password';
 import SignUp from './Containers/signup/signup';
 import Layout from './hoc/Layout/Layout';
 import Home from './Containers/Home/Home';
-import User from './Containers/UserProfile/UserProfile';
+import User from './Containers/UserProfile/userProfile';
 import Auxiliary from './hoc/Auxiliary/Auxiliary';
 import * as actions from './store/actions/index';
 
