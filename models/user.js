@@ -16,7 +16,13 @@ const UserSchema=new mongoose.Schema({
         },
     password:String,
     resetPasswordToken:String,
-    resetPasswordExpires:Date    
+    resetPasswordExpires:Date,
+    doctor:[
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref:"Doctor"
+        }
+    ]
 })
 
 module.exports=mongoose.model("User",UserSchema);

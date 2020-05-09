@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Link from '@material-ui/core/Link';
+import { Link as RouterLink } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -18,9 +19,14 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
   },
+  linkItem:{
+    color:"white",
+    textTransform:"uppercase",
+    padding:'0 5px'
+  }
 }));
 
-export default function Header() {
+export default function Header(props) {
   const classes = useStyles();
 
   return (
@@ -33,11 +39,10 @@ export default function Header() {
           <Typography variant="h6" className={classes.title}>
             Resolute
           </Typography>
-          {/* <Button color="inherit">Login</Button>
-          <Button color="inherit">Signup</Button> */}
-          <Link href="/">
-            Login
-        </Link>
+          {/* <Button color="inherit" onClick={props.bookAppointments} >Book an Appointment</Button> */}
+          <Link to="/home" component={RouterLink} underline='none' className={classes.linkItem}>Book an Appointment</Link>
+          <Link to="/user" component={RouterLink} underline='none' className={classes.linkItem}>Booked Appointments</Link>
+          <Button color="inherit" onClick={props.logout} >Logout</Button>
         </Toolbar>
       </AppBar>
     </div>
