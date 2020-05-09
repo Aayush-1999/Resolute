@@ -64,6 +64,7 @@ export const authCheckState=()=>{
         const token=localStorage.getItem('token')
         if(!token){
             dispatch(logout())
+            console.log("reached")
         }
         else{
             const expirationDate=new Date(localStorage.getItem('expirationDate'))

@@ -19,7 +19,6 @@ class Home extends Component{
 
     render(){
         const {classes}=this.props;
-        console.log(this.props)
         return(
             <Container maxWidth="lg">
             <Grid container className={classes.root} spacing={2}>

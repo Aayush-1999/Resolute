@@ -5,6 +5,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { withStyles } from '@material-ui/core/styles';
 import {connect} from 'react-redux';
 import * as actions from '../../store/actions/index';
+import { withRouter } from 'react-router-dom';
 
 const styles=theme=>({
     content:{
@@ -15,6 +16,10 @@ const styles=theme=>({
 
 
 class Layout extends Component{
+    logoutHandler=()=>{
+        this.props.onLogout()
+        this.props.history.push("/")
+    }
     render(){
         const {classes} = this.props;
 
@@ -22,9 +27,7 @@ class Layout extends Component{
             <Auxiliary>
                 <CssBaseline />
                 <Appbar 
-                    logout={this.logoutHandler} 
-                    bookAppointments={()=>this.pageChangeHandler("/home")} 
-                    showAppointments={()=>this.pageChangeHandler("/user")} />
+                    logout={this.logoutHandler}/>
                 <main className={classes.content}>
                     {this.props.children}
                 </main>
@@ -39,4 +42,4 @@ const mapDispatchToProps=dispatch=>{
     }
 }
 
-export default connect(null,mapDispatchToProps)(withStyles(styles)(Layout));
+export default connect(null,mapDispatchToProps)(withRouter((withStyles(styles)(Layout))));

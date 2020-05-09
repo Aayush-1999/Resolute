@@ -62,7 +62,6 @@ class Login extends Component{
                     password:this.state.password
                 })
                 .then(response=>{
-                    console.log(response);
                     if(response.status===200){
                         this.props.onAuthStart(response.data)
                         this.props.history.push({
@@ -139,8 +138,6 @@ class Login extends Component{
                                 <FormHelperText id="password" error={this.state.error} >{this.state.helperText}</FormHelperText>
                                 <Grid container className={classes.grid}>
                                     <Grid item xs>
-                                        <Button color="primary" component={RouterLink} className={classes.label} 
-                                        to="/forgotpws">Forgot password</Button>
                                     </Grid>
                                     <Grid item>
                                         <Button
