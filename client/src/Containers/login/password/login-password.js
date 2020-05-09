@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {Link as RouterLink} from 'react-router-dom';
 import {connect} from 'react-redux';
 import axios from '../../../axiosInstance';
 import Typography from '@material-ui/core/Typography';
