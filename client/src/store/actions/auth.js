@@ -9,18 +9,18 @@ export const authStart=(data)=>{
         localStorage.setItem('refreshToken',data.refreshToken)
         localStorage.setItem('expirationDate',expirationDate)
         localStorage.setItem('refreshExpirationDate',refreshExpirationDate)
-        localStorage.setItem('user',JSON.stringify(data.user))
-        dispatch(authSuccess(data.token,data.refreshToken,data.user))
+        localStorage.setItem('userId',data.user._id)
+        dispatch(authSuccess(data.token,data.refreshToken,data.user._id))
         dispatch(checkAuthTimeout(3600,data.user))
     }
 }
 
-export const authSuccess=(token,refreshToken,user)=>{
+export const authSuccess=(token,refreshToken,id)=>{
     return{
         type:actionTypes.AUTH_SUCCESS,
         token:token,
         refreshToken:refreshToken,
-        user:user
+        userId:id
     }
 }
 
@@ -53,7 +53,7 @@ export const logout=()=>{
     localStorage.removeItem('refreshToken')
     localStorage.removeItem('expirationDate')
     localStorage.removeItem('refreshExpirationDate')
-    localStorage.removeItem('user')
+    localStorage.removeItem('userId')
     return{
         type:actionTypes.AUTH_LOGOUT
     }
@@ -64,15 +64,14 @@ export const authCheckState=()=>{
         const token=localStorage.getItem('token')
         if(!token){
             dispatch(logout())
-            console.log("reached")
         }
         else{
             const expirationDate=new Date(localStorage.getItem('expirationDate'))
             if(expirationDate>new Date()){
-                const user=JSON.parse(localStorage.getItem('user'))
+                const userId=localStorage.getItem('userId')
                 const refreshToken=localStorage.getItem('refreshToken')
-                dispatch(authSuccess({token,refreshToken,user}))
-                dispatch(checkAuthTimeout((expirationDate.getTime()-new Date().getTime())/1000,user))
+                dispatch(authSuccess({token,refreshToken,userId}))
+                dispatch(checkAuthTimeout((expirationDate.getTime()-new Date().getTime())/1000,userId))
             }
             else{
                 dispatch(logout())

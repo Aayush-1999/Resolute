@@ -4,6 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import axios from '../../axiosInstance';
 import { withStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import {connect} from 'react-redux';
 
 const styles=(theme) => ({
     root:{
@@ -85,10 +86,12 @@ class Home extends Component{
     }
 
     bookAppointmentHandler=(doctor,index)=>{
-        axios.post("/book",doctor)
+        axios.post("/book",{
+            doctor:doctor,
+            id:this.props.userId
+        })
             .then(response=>{
                 if(response.status===200){
-                    console.log(response)
                     let newState=this.state.booked;
                     newState[index]=true
                     this.setState({booked:newState})
@@ -127,4 +130,10 @@ class Home extends Component{
     }
 }
 
-export default withStyles(styles)(Home);
+const mapStateToProps=state=>{
+    return{
+        userId:state.auth.token.userId,
+    }
+}
+
+export default connect(mapStateToProps)(withStyles(styles)(Home));

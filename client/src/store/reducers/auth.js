@@ -1,7 +1,7 @@
 import * as actionTypes from '../actions/actionTypes';
 
 const initialStore={
-    user:null,
+    userId:null,
     token:null,
     refreshToken:null,
     authenticated:false
@@ -12,7 +12,7 @@ const reducer=(state=initialStore,action)=>{
         case actionTypes.AUTH_SUCCESS:
             return{
                 ...state,
-                user:action.user,
+                userId:action.userId,
                 token:action.token,
                 refreshToken:action.refreshToken,
                 authenticated:true
@@ -20,7 +20,7 @@ const reducer=(state=initialStore,action)=>{
         case actionTypes.AUTH_LOGOUT:
             return{
                 ...state,
-                user:null,
+                userId:null,
                 token:null,
                 refreshToken:null,
                 authenticated:false

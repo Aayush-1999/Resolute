@@ -3,6 +3,7 @@ const express      = require("express"),
       bcrypt       = require("bcryptjs"),
       jwt          = require("jsonwebtoken"),
       User         = require("../models/user"),
+      Doctor       = require("../models/doctor"),
       refreshTokens= {};
 
 //REGISTER ROUTE

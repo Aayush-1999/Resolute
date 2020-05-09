@@ -20,9 +20,9 @@ app.use(cors());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
-app.use("/",indexRoute);
 app.use("/book",bookingRoute);
 app.use("/user",userRoute);
+app.use("/",indexRoute);    
 
 if(process.env.NODE_ENV==='production'){
     app.use(express.static('client/build'));

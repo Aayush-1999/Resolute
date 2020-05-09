@@ -5,24 +5,16 @@ const express = require("express"),
 
 router.post("/",async(req,res)=>{
     try{
-        console.log(req.body)
-        console.log(req.user._id)
-        let user = await User.findById(req.user._id)
-        console.log(user)
-        const doctor = req.body
-        user.doctor.push(doctor);
+        let user = await User.findById(req.body.id)
+        const newDoctor = await Doctor.create(req.body.doctor)
+        user.doctor.push(newDoctor);
         await user.save();
-        const newDoctor = await Doctor.save(doctor)
-        console.log(user)
-        console.log(doctor)
-        res.status(200)
+        res.status(200).json({})
     }
     catch(err){
+        console.log(err)
         res.status(400)
     }
-
-
-
 })
 
 module.exports = router;
