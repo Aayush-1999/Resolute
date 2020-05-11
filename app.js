@@ -20,8 +20,8 @@ app.use(cors());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
-app.use("/book",bookingRoute);
 app.use("/user",userRoute);
+app.use("/book",bookingRoute);
 app.use("/",indexRoute);    
 
 if(process.env.NODE_ENV==='production'){

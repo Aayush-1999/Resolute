@@ -132,7 +132,7 @@ class Home extends Component{
 
 const mapStateToProps=state=>{
     return{
-        userId:state.auth.token.userId,
+        userId:state.auth.userId,
     }
 }
 

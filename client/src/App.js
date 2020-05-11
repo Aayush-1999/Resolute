@@ -22,6 +22,7 @@ class App extends Component{
         <Route path="/signin" exact component={LoginEmail} />
         <Route path="/signin/pwd" exact component={LoginPassword} />
         <Route path="/signup" exact component={SignUp} />
+        <Redirect to="/" />
       </Switch>
     )
     
@@ -29,8 +30,10 @@ class App extends Component{
       routes=(
         <Layout>
           <Switch>
+            <Route path="/" exact><Redirect to="/home" /></Route>
             <Route path="/home" exact component={Home} />
             <Route path="/appointments" exact component={User} />
+            <Redirect to="/" />
           </Switch>
         </Layout>
       )
